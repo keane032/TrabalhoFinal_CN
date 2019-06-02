@@ -24,6 +24,9 @@ public class Alimento {
 	public void setAvaliacaoRegular(int avaliacaoRegular) {
 		this.avaliacaoRegular = avaliacaoRegular;
 	}
+	public Alimento() {
+		super();
+	}
 	public int getAvaliacaoRuim() {
 		return avaliacaoRuim;
 	}
