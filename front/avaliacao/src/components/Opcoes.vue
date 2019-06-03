@@ -58,6 +58,11 @@ export default {
 
     };
   },
+  created(){
+      this.$axios.get("http://localhost:8081/alimentos/listar").then((response) => {
+            console.log(response)
+        })
+  },
   methods: {
     salvar() {},
     choice(comida,status) {
