@@ -2,11 +2,17 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Cadastro from './views/Cadastro.vue'
+import CadastrarRefeicao from './views/CadastrarRefeicao.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path:'/CadastrarRefeicao',
+      name:'cadastrarRefeicao',
+      component: CadastrarRefeicao  
+    },
     {
       path:'/cadastrar',
       name:'cadastro',
