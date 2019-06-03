@@ -15,28 +15,28 @@ import br.com.ufc.TrabalhoFinal_CN.util.ImagemFileUtils;
 @Service
 public class AdminService {
 	
-	@Autowired
-	private PessoaRepossitory pessoaRepository;
-	
-	public void salvarAdmin(Admin admin, MultipartFile imagem) {
-		String caminho = "images/" + admin.getNomeAdmin()+ ".png";
-		ImagemFileUtils.salvarImagem(caminho,imagem);
-		
-		pessoaRepository.save(admin);
-	}
-
-	public List<Admin> listarAdmins() {
-		return pessoaRepository.findAll();
-	}
-
-	public Admin buscarPorId(Long id) {
-		return pessoaRepository.getOne(id);
-		
-	}
-
-	public void excluirPorId(Long id) {
-		pessoaRepository.deleteById(id);
-		
-	}
+//	@Autowired
+//	private PessoaRepossitory pessoaRepository;
+//	
+//	public void salvarAdmin(Admin admin, MultipartFile imagem) {
+//		String caminho = "images/" + admin.getNomeAdmin()+ ".png";
+//		ImagemFileUtils.salvarImagem(caminho,imagem);
+//		
+//		pessoaRepository.save(admin);
+//	}
+//
+//	public List<Admin> listarAdmins() {
+//		return pessoaRepository.findAll();
+//	}
+//
+//	public Admin buscarPorId(Long id) {
+//		return pessoaRepository.getOne(id);
+//		
+//	}
+//
+//	public void excluirPorId(Long id) {
+//		pessoaRepository.deleteById(id);
+//		
+//	}
 
 }

@@ -3,7 +3,18 @@ package br.com.ufc.TrabalhoFinal_CN.model;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
 public class Relatorio {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
   private ArrayList<Alimento> ListaDeAlimentos;
   private Date dateDoRelatorio;
 public ArrayList<Alimento> getListaDeAlimentos() {

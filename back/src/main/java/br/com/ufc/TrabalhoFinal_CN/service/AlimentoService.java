@@ -17,10 +17,7 @@ public class AlimentoService {
 	@Autowired
 	private AlimentoRepository alimentoRepository;
 	
-	public void salvarAlimento(Alimento alimento, MultipartFile imagem) {
-		String caminho = "images/" + alimento.getNomeAlimento() + ".png";
-		ImagemFileUtils.salvarImagem(caminho,imagem);
-		
+	public void salvarAlimento(Alimento alimento) {
 		alimentoRepository.save(alimento);
 	}
 

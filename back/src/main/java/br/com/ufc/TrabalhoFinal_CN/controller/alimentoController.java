@@ -3,37 +3,33 @@ package br.com.ufc.TrabalhoFinal_CN.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.ufc.TrabalhoFinal_CN.model.Alimento;
 import br.com.ufc.TrabalhoFinal_CN.service.AlimentoService;
 
-@Controller
-@RequestMapping("/alimento")
+@RestController("/alimento")
 public class alimentoController {
 	@Autowired
 	private AlimentoService alimentoService;
 	
-	@RequestMapping("/formulario")
-	public ModelAndView formularioAlimento() {
-		ModelAndView mv = new ModelAndView("formulario");
-		mv.addObject("alimento", new Alimento());
-		return mv;
-	}
-	
+
 	@PostMapping("/salvar")
-	public ModelAndView salvarAlimento(Alimento alimento, @RequestParam(value= "imagem") MultipartFile imagem) {
-		alimentoService.salvarAlimento(alimento,imagem);
-		ModelAndView mv = new ModelAndView("redirect:/alimento/listar");
-		return mv;
-		
+	public ResponseEntity<String>  salvarAlimento(@RequestBody Alimento alimento) {
+		if (alimento != null) {
+			alimentoService.salvarAlimento(alimento);
+			return new ResponseEntity<String>("",HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	@GetMapping("/listar")

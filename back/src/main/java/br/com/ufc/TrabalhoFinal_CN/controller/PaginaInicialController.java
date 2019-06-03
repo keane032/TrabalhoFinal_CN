@@ -11,7 +11,6 @@ public class PaginaInicialController {
 		return "pagina-inicial";
 	}
 	
-	
-	
+
 
 }

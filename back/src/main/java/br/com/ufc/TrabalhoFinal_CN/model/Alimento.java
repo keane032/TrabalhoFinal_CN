@@ -1,6 +1,16 @@
 package br.com.ufc.TrabalhoFinal_CN.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Alimento {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String nomeAlimento;
 	private int avaliacaoBoa;
 	private int avaliacaoRegular;
