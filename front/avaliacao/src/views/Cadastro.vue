@@ -33,7 +33,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 form{
   width: 30%;
   padding: 15px;
