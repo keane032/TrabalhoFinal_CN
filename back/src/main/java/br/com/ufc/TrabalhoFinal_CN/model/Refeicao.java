@@ -2,7 +2,15 @@ package br.com.ufc.TrabalhoFinal_CN.model;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity
 public class Refeicao {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String nomeRefeicao;
 	private ArrayList <Alimento> ListaDeAlimentos;
 	public String getNomeRefeicao() {
@@ -21,6 +29,15 @@ public class Refeicao {
 	}
 	public void setListaDeAlimentos(ArrayList<Alimento> listaDeAlimentos) {
 		ListaDeAlimentos = listaDeAlimentos;
+	}
+	public Refeicao(Integer id, String nomeRefeicao, ArrayList<Alimento> listaDeAlimentos) {
+		super();
+		this.id = id;
+		this.nomeRefeicao = nomeRefeicao;
+		ListaDeAlimentos = listaDeAlimentos;
+	}
+	public Refeicao() {
+		super();
 	}
 	@Override
 	public String toString() {
