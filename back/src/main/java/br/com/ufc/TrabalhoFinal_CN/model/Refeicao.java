@@ -1,8 +1,10 @@
 package br.com.ufc.TrabalhoFinal_CN.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Refeicao {
+	private Date date;
 	private String nomeRefeicao;
 	private ArrayList <Alimento> ListaDeAlimentos;
 	public String getNomeRefeicao() {

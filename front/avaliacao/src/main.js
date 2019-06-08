@@ -5,7 +5,10 @@ import store from './store'
 import './registerServiceWorker'
 import BootstrapVue from 'bootstrap-vue'
 import axios from 'axios'
+import 'chart.js'
+import 'hchs-vue-charts'
 
+Vue.use(window.VueCharts)
 Vue.use(BootstrapVue)
 
 Vue.prototype.$axios = axios
