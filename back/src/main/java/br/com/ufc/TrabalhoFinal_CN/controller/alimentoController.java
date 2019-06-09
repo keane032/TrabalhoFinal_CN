@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import br.com.ufc.TrabalhoFinal_CN.model.Alimento;
 import br.com.ufc.TrabalhoFinal_CN.service.AlimentoService;
+import br.com.ufc.TrabalhoFinal_CN.view.AliementoView;
 
 @RestController
 @RequestMapping("/alimentos")
@@ -25,7 +28,7 @@ public class alimentoController {
 	private AlimentoService alimentoService;
 	
 
-	@PostMapping("/salvar")
+	@PostMapping(value="/salvar")
 	public ResponseEntity<String> salvarAlimento(@RequestBody Alimento alimento) {
 		if (alimento != null) {
 			alimentoService.salvarAlimento(alimento);
@@ -35,6 +38,7 @@ public class alimentoController {
 	}
 	
 	@GetMapping("/listar")
+	@JsonView(AliementoView.class)
 	public ResponseEntity<List<Alimento>> listarAlimento() {
 	  List<Alimento> alimento = alimentoService.listarAlimentos();
 	  return new ResponseEntity<List<Alimento>>(alimento,HttpStatus.OK);

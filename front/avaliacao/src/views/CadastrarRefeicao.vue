@@ -4,99 +4,59 @@
     <form>
       <div class="col-12">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" name="nome" v-bind="nome"/> 
+        <input type="text" class="form-control" name="nome" v-model="nomeRefeicao"/> 
       </div>
     <div class="container row">
-    <div class="col-6">
-     <div class="form-group">
-        <label for="necessidade">Opcao 1</label>
-        <select class="form-control" name="necessidade">
-        <option v-for="alimento of alimentos" v-bind:key="alimento.nomeAlimento">
-            {{alimento.nomeAlimento}}</option>
-      
-        </select>
+    <ul>
+        <div class="col 6">
+            <li v-for="alimento of alimentos" v-bind:key="alimento.nomeAlimento">
+                <input type="checkbox" v-model="ListaDeAlimentos"
+                v-bind:id="alimento.id"
+                v-bind:value="alimento"
+                > {{alimento.nomeAlimento}}<br>
+            </li>
+        </div>
+    </ul>
     </div>
-    </div>
-   <div class="col-6"> 
-    <div class="form-group">
-        <label for="necessidade">Opcao 2</label>
-        <select class="form-control" name="necessidade">
-        <option v-for="alimento of alimentos" v-bind:key="alimento.nomeAlimento">
-            {{alimento.nomeAlimento}}</option>
-      
-        </select>
-    </div>
-   </div>
-   <div class="col-6">
-    <div class="form-group">
-        <label for="necessidade">Opcao 3</label>
-        <select class="form-control" name="necessidade">
-        <option v-for="alimento of alimentos" v-bind:key="alimento.nomeAlimento">
-            {{alimento.nomeAlimento}}</option>
-        </select>
-    </div>
-   </div>
-   <div class="col-6">
-    <div class="form-group">
-        <label for="necessidade">Opcao 4</label>
-        <select class="form-control" name="necessidade">
-         <option v-for="alimento of alimentos" v-bind:key="alimento.nomeAlimento">
-            {{alimento.nomeAlimento}}</option>
-        </select>
-    </div>
-   </div>
-   <div class="col-6">
-     <div class="form-group">
-        <label for="necessidade">Opcao 5</label>
-        <select class="form-control" name="necessidade">
-         <option v-for="alimento of alimentos" v-bind:key="alimento.nomeAlimento">
-            {{alimento.nomeAlimento}}</option>
-        </select>
-    </div>
-   </div>
-   <div class="col-6">
-     <div class="form-group">
-        <label for="necessidade">Opcao 6</label>
-        <select class="form-control" name="necessidade">
-         <option v-for="alimento of alimentos" v-bind:key="alimento.nomeAlimento">
-            {{alimento.nomeAlimento}}</option>
-        </select>
-    </div>
-   </div>
-   <div class="col-12">
-     <div class="form-group">
-        <label for="necessidade">Opcao 7</label>
-        <select class="form-control" name="necessidade">
-         <option v-for="alimento of alimentos" v-bind:key="alimento.nomeAlimento">
-            {{alimento.nomeAlimento}}</option>
-        </select>
-    </div>
-   </div>
-    </div>
-        <button class="btn btn-primary">Salvar</button>
+       
     </form>
+     <button v-on:click="salvar" class="btn btn-primary">Salvar</button>
 </div>
 </template>
 <script>
+import Alimento from '../model/Alimento'
 export default {
     name:'cadastrarRefeicao',
     data (){
         return {
-            nome:'',
             alimentos:[],
-            refeicao:{
-                nomeRefeicao:'',
-                ListaDeAlimentos:[]
-            },            
+            nomeRefeicao:'',
+            ListaDeAlimentos:[],            
         }
     },
     created(){
             let _this = this
-            this.$axios.get("http://localhost:8081/alimentos/listar",)
+            this.$axios.get("http://localhost:8081/alimentos/listar")
                 .then(function(response) {
                     console.log(response.data);
                     _this.alimentos = response.data;
                 });
+    },
+    methods:{
+        salvar(){
+
+            console.log(JSON.stringify(this.ListaDeAlimentos))
+
+            this.$axios.post("http://localhost:8081/refeicao/salvar",
+                {
+                   nomeRefeicao:this.nomeRefeicao,
+                   listaDeAlimentos:this.ListaDeAlimentos
+                }
+                
+                ).then(function(response) {
+                    console.log(response)
+                });
+        }
     }
 
 }

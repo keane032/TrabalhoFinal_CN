@@ -15,8 +15,9 @@ public class RefeicaoService {
 	@Autowired
 	private ReifeicaoRepository refeicaoRepository;
 	
+	
 	public void salvarRefeicao(Refeicao refeicao) {
-		refeicaoRepository.save(refeicao);
+		this.refeicaoRepository.save(refeicao);
 	}
 
 	public List<Refeicao> listarRefeicoes() {

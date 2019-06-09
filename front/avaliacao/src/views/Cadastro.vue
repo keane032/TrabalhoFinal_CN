@@ -21,14 +21,15 @@ export default {
     },
     methods:{
         salvar(){
-        this.$axios.post("http://localhost:8081/alimentos/salvar", {
-          nomeAlimento: this.nome,
-          descricao: this.desc
-        })
-        .then(function(response) {
-          console.log(response);
-        });
-              this.$router.go()
+              this.$axios.post("http://localhost:8081/alimentos/salvar", {
+                nomeAlimento: this.nome,
+                descricao: this.desc
+              })
+              .then(function(response) {
+                console.log(response);
+              });
+                this.nome='',
+                this.desc=''   
             }
     }
 }

@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.ufc.TrabalhoFinal_CN.model.Refeicao;
-
 import br.com.ufc.TrabalhoFinal_CN.service.RefeicaoService;
 
 @RestController
@@ -25,18 +26,22 @@ public class RefeicaoController {
 	private RefeicaoService refeicaoService;
 	
 
-	@PostMapping("/salvar")
-	public ResponseEntity<String> salvarAlimento(@RequestBody Refeicao refeicao) {
-		if (refeicao != null) {
+	@RequestMapping(value="/salvar",method=RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> salvarAlimento(@RequestBody Refeicao refeicao){
+		
+		 System.out.println(refeicao.getListaDeAlimentos().size());
+		if (refeicao.getListaDeAlimentos().size() != 0) {
 			refeicaoService.salvarRefeicao(refeicao);
 			return new ResponseEntity<String>("",HttpStatus.OK);
 		}
-		return new ResponseEntity<String>("",HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<String>("alimentos nulos",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	@GetMapping("/listar")
 	public ResponseEntity<List<Refeicao>> listarRefeicao() {
 	  List<Refeicao> refeicao = refeicaoService.listarRefeicoes();
+	  
 	  return new ResponseEntity<List<Refeicao>>(refeicao,HttpStatus.OK);
 	}
 	
