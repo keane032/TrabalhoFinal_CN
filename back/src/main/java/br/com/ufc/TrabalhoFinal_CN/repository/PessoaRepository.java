@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.ufc.TrabalhoFinal_CN.model.Admin;
 
 @Repository
-public interface PessoaRepossitory extends JpaRepository<Admin, Long> {
+public interface PessoaRepository extends JpaRepository<Admin, Long> {
 
 }

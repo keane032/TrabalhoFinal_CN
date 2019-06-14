@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import br.com.ufc.TrabalhoFinal_CN.model.Admin;
-import br.com.ufc.TrabalhoFinal_CN.repository.PessoaRepossitory;
+import br.com.ufc.TrabalhoFinal_CN.repository.PessoaRepository;
 import br.com.ufc.TrabalhoFinal_CN.util.ImagemFileUtils;
 
 @Service
