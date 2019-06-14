@@ -2,8 +2,8 @@
   <div>
     <div>
       <h1 style="margin-left: 37%;">Vote nas opções</h1>
+      <h4 v-if="comidas.length == 0" style="margin-left:30%;color:red">Nao ha refeicoes cadastradas</h4>
     </div>
-  
       <table class="table table-hover" align="center">
         <thead>
           <tr>
@@ -16,25 +16,24 @@
         <tbody>
           <tr v-for="comida of comidas" v-bind:key="comida.nome">
            
-           <th scope="row">{{comida.nome}}</th>
-         
+           <th scope="row">{{comida.nomeAlimento}}</th>
             <td>
                  <div>
                  <label><input type="radio" 
-                 v-on:click="choice(comida.nome,bom)"
-                 v-bind:name=comida.nome ></label>
+                 v-on:click="choice(comida.nomeAlimento,bom)"
+                 v-bind:name=comida.nomeAlimento ></label>
                </div>
             </td>
             <td>
                 <div>
-                 <label><input type="radio" v-on:click="choice(comida.nome,razoavel)" 
-                 v-bind:name=comida.nome ></label>
+                 <label><input type="radio" v-on:click="choice(comida.nomeAlimento,razoavel)" 
+                 v-bind:name=comida.nomeAlimento ></label>
                </div>
             </td>
             <td>
                <div>
-                 <label><input type="radio" v-on:click="choice(comida.nome,ruim)" 
-                 v-bind:name=comida.nome></label>
+                 <label><input type="radio" v-on:click="choice(comida.nomeAlimento,ruim)" 
+                 v-bind:name=comida.nomeAlimento></label>
                </div>
             </td>
   
@@ -42,7 +41,7 @@
         </tbody>
       </table>
    
-    <button v-on:click="salvar()" style="margin-left:  55%;" class="btn btn-primary">Salvar</button>
+    <button v-if="comidas.length > 0" v-on:click="salvar()" style="margin-left:  55%;" class="btn btn-primary">Salvar</button>
   </div>
 </template>
 <script>
@@ -54,20 +53,21 @@ export default {
       bom:"Bom",
       razoavel:"razoavel",
       ruim:"ruim",
-      comidas: [{nome:"Arroz",avaliacao:""}, {nome:"Feijao",avaliacao:""}
-      , {nome:"Carne",avaliacao:""},{nome:"Frango",avaliacao:""}, 
-      {nome:"Vegetariano",avaliacao:""}]
+      comidas: []
 
     };
   },
   created(){
-      this.$axios.get("http://localhost:8081/alimentos/listar").then((response) => {
-            console.log(response)
+      let _this = this
+      this.$axios.get("http://localhost:8081/refeicao/listar").then((response) => {
+            console.log(response.data[0].listaDeAlimentos)
+           _this.comidas=response.data[0].listaDeAlimentos
         })
   },
   methods: {
     salvar() {
        console.log(this.comidas)
+       
     },
     choice(comida,status) {
       console.log(comida)

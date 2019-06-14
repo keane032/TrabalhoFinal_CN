@@ -4,11 +4,17 @@ import Home from './views/Home.vue'
 import Cadastro from './views/Cadastro.vue'
 import CadastrarRefeicao from './views/CadastrarRefeicao.vue'
 import Graficos from './views/Graficos.vue'
+import Login from './views/Login.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path:'/Login',
+      name:'login',
+      component: Login
+    },
     {
       path:'/Graficos',
       name:'graficos',

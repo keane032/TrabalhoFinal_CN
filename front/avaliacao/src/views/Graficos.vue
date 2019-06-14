@@ -6,7 +6,9 @@
         <div class="col-4">
             <chartjs-bar></chartjs-bar>
             <chartjs-line></chartjs-line>
+            <button class="btn btn-primary">Gerar Relatorio</button>
         </div>
+         
     </div>
 </template>
 <script>

@@ -7,7 +7,8 @@
         <input type="text" class="form-control" name="nome" v-model="nomeRefeicao"/> 
       </div>
     <div class="container row">
-    <ul>
+        <h4 v-if="alimentos.length == 0" style="color:red">Nao ha comida cadastrada</h4>
+    <ul v-if="alimentos.length > 0">
         <div class="col 6">
             <li v-for="alimento of alimentos" v-bind:key="alimento.nomeAlimento">
                 <input type="checkbox" v-model="ListaDeAlimentos"
@@ -18,9 +19,9 @@
         </div>
     </ul>
     </div>
-       
+      
     </form>
-     <button v-on:click="salvar" class="btn btn-primary">Salvar</button>
+      <button v-on:click="salvar" style="margin-left: 30%" class="btn btn-primary">Salvar</button>
 </div>
 </template>
 <script>
@@ -56,6 +57,7 @@ export default {
                 ).then(function(response) {
                     console.log(response)
                 });
+                 this.$router.push('/') 
         }
     }
 

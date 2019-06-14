@@ -7,6 +7,7 @@
         <router-link style="margin-left: 3%;" to="/cadastrar"><a>Cadastrar Comida</a> </router-link>
         <router-link style="margin-left: 3%;" to="/Graficos"><a>Graficos</a> </router-link>
         <router-link style="margin-left: 3%;" to="/"><a>Avaliacao</a> </router-link>
+        <router-link style="margin-left: 3%;" to="/Login"><a>Login</a> </router-link>
       </div>
     </div>
     <router-view/>
