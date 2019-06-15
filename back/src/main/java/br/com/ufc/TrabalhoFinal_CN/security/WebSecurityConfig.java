@@ -15,11 +15,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
-
-	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.csrf().disable().authorizeRequests()
+		.antMatchers(HttpMethod.POST,"/login").permitAll()
 		.antMatchers(HttpMethod.GET, "/refeicao/listar").permitAll()
 		.antMatchers(HttpMethod.GET, "/alimentos/atualizar/{id}").hasRole("ADMIN")
 		.antMatchers(HttpMethod.GET, "/alimentos/excluir/{id}").hasRole("ADMIN")
@@ -29,8 +28,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers(HttpMethod.GET, "/refeicao/excluir/{id}").hasRole("ADMIN")
 		.antMatchers(HttpMethod.POST, "/refeicao/salvar").hasRole("ADMIN")
 		
-		
-		
 		.antMatchers(HttpMethod.POST, "/cadastrarEvento").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
@@ -38,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-		auth.inMemoryAuthentication().withUser("Admin").password("12345").roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("admin").password("12345").roles("ADMIN");
 		
 		
 	}
