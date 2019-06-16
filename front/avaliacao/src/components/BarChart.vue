@@ -16,7 +16,7 @@ export default {
 
     mounted () {
         let _this = this
-            this.$axios.get("http://54.87.6.194:8080/alimentos/listar")
+            this.$axios.get("http://54.87.6.194:8080/agoravai/alimentos/listar")
                 .then(function(response) {
                     console.log(response.data);
                     _this.data = response.data;

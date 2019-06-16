@@ -60,7 +60,7 @@ export default {
   },
   created(){
       let _this = this
-      this.$axios.get("http://54.87.6.194:8080/refeicao/listar").then((response) => {
+      this.$axios.get("http://54.87.6.194:8080/agoravai/refeicao/listar").then((response) => {
             console.log(response.data[0].listaDeAlimentos)
            _this.comidas=response.data[0].listaDeAlimentos
         })
@@ -69,7 +69,7 @@ export default {
     salvar() {
         let _this = this
         console.log(_this.aux)
-      this.$axios.post("http://54.87.6.194:8080/avaliacao/salvar",_this.aux).then((response) => {
+      this.$axios.post("http://54.87.6.194:8080/agoravai/avaliacao/salvar",_this.aux).then((response) => {
           
         })
     },
