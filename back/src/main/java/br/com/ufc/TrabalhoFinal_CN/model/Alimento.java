@@ -25,7 +25,7 @@ public class Alimento implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String nomeAlimento;
 	private String descricao;
 	private int avaliacaoBoa = 0;
@@ -35,11 +35,11 @@ public class Alimento implements Serializable{
 	
 	
 	@JsonView(AliementoView.class)
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
