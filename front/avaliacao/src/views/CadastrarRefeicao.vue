@@ -37,7 +37,7 @@ export default {
     },
     created(){
             let _this = this
-            this.$axios.get("http://localhost:8081/alimentos/listar")
+            this.$axios.get("http://localhost:8080/alimentos/listar")
                 .then(function(response) {
                     console.log(response.data);
                     _this.alimentos = response.data;
@@ -48,7 +48,7 @@ export default {
 
             console.log(JSON.stringify(this.ListaDeAlimentos))
 
-            this.$axios.post("http://localhost:8081/refeicao/salvar",
+            this.$axios.post("http://localhost:8080/refeicao/salvar",
                 {
                    nomeRefeicao:this.nomeRefeicao,
                    listaDeAlimentos:this.ListaDeAlimentos

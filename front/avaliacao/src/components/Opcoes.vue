@@ -59,7 +59,7 @@ export default {
   },
   created(){
       let _this = this
-      this.$axios.get("http://localhost:8081/refeicao/listar").then((response) => {
+      this.$axios.get("http://localhost:8080/refeicao/listar").then((response) => {
             console.log(response.data[0].listaDeAlimentos)
            _this.comidas=response.data[0].listaDeAlimentos
         })
