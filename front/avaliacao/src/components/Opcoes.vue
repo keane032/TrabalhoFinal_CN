@@ -51,7 +51,7 @@ export default {
   data() {
     return {
       bom:"Bom",
-      razoavel:"Razoavel",
+      razoavel:"Regular",
       ruim:"Ruim",
       comidas: [],
       aux:[]
@@ -69,7 +69,7 @@ export default {
     salvar() {
         let _this = this
         console.log(_this.aux)
-      this.$axios.post("http://54.87.6.194:8080/agoravai/avaliacao/salvar",_this.aux).then((response) => {
+          this.$axios.post("http://54.87.6.194:8080/agoravai/avaliacao/salvar",_this.aux).then((response) => {
           
         })
     },
