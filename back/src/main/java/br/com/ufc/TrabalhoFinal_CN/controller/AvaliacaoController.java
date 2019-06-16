@@ -55,7 +55,7 @@ public class AvaliacaoController {
 			}
 			else if(alimento.getava().equals("Regular")) {
 				Alimento alimento2 = ali.buscarPorId(alimento.getId());
-				alimento2.setAvaliacaoRegular(alimento2.getAvaliacaoRuim() + 1);
+				alimento2.setAvaliacaoRegular(alimento2.getAvaliacaoRegular() + 1);
 				ali.update(alimento2);
 				
 			}
