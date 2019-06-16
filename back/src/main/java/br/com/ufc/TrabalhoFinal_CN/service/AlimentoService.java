@@ -35,4 +35,7 @@ public class AlimentoService {
 		
 	}
 
+	public void update(Alimento alimento) {
+		alimentoRepository.saveAndFlush(alimento);
+	}
 }

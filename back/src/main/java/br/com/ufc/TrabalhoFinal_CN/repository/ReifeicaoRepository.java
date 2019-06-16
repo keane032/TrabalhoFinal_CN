@@ -8,5 +8,5 @@ import br.com.ufc.TrabalhoFinal_CN.model.Refeicao;
 
 @Repository
 public interface ReifeicaoRepository extends JpaRepository<Refeicao, Long>  {
-
+	
 }

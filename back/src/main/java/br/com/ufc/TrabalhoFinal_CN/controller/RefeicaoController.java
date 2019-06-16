@@ -41,7 +41,6 @@ public class RefeicaoController {
 	@GetMapping("/listar")
 	public ResponseEntity<List<Refeicao>> listarRefeicao() {
 	  List<Refeicao> refeicao = refeicaoService.listarRefeicoes();
-	  
 	  return new ResponseEntity<List<Refeicao>>(refeicao,HttpStatus.OK);
 	}
 	

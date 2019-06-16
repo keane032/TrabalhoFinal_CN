@@ -6,5 +6,5 @@ import br.com.ufc.TrabalhoFinal_CN.model.Alimento;
 
 @Repository
 public interface AlimentoRepository extends JpaRepository<Alimento, Long> {
-
+	
 }
