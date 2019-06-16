@@ -18,7 +18,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.csrf().disable().authorizeRequests()
-//		.antMatchers(HttpMethod.POST,"/login").permitAll()
+		.antMatchers(HttpMethod.POST,"/login").permitAll()
 //		.antMatchers(HttpMethod.GET, "/refeicao/listar").permitAll()
 //		.antMatchers(HttpMethod.GET, "/alimentos/atualizar/{id}").hasRole("ADMIN")
 //		.antMatchers(HttpMethod.GET, "/alimentos/excluir/{id}").hasRole("ADMIN")
@@ -27,6 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 //		.antMatchers(HttpMethod.GET, "/refeicao/atualizar/{id}").hasRole("ADMIN")
 //		.antMatchers(HttpMethod.GET, "/refeicao/excluir/{id}").hasRole("ADMIN")
 //		.antMatchers(HttpMethod.POST, "/refeicao/salvar").hasRole("ADMIN")
+//		
 //		
 //		.antMatchers(HttpMethod.POST, "/cadastrarEvento").hasRole("ADMIN")
 		.anyRequest().permitAll()

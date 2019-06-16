@@ -14,7 +14,7 @@
                 <input type="checkbox" v-model="ListaDeAlimentos"
                 v-bind:id="alimento.id"
                 v-bind:value="alimento"
-                > {{alimento.nomeAlimento}}<br>
+                > {{alimento.nomeAlimento}}_{{alimento.avaliacaoBoa}}<br>
             </li>
         </div>
     </ul>
@@ -37,7 +37,7 @@ export default {
     },
     created(){
             let _this = this
-            this.$axios.get("http://localhost:8080/alimentos/listar")
+            this.$axios.get("http://54.87.6.194:8080/agoravai/alimentos/listar")
                 .then(function(response) {
                     console.log(response.data);
                     _this.alimentos = response.data;
@@ -48,7 +48,7 @@ export default {
 
             console.log(JSON.stringify(this.ListaDeAlimentos))
 
-            this.$axios.post("http://localhost:8080/refeicao/salvar",
+            this.$axios.post("http://54.87.6.194:8080/agoravai/refeicao/salvar",
                 {
                    nomeRefeicao:this.nomeRefeicao,
                    listaDeAlimentos:this.ListaDeAlimentos

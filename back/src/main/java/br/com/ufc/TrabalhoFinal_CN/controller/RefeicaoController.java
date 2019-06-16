@@ -53,10 +53,11 @@ public class RefeicaoController {
 	}
 	
 	@RequestMapping("/excluir/{id}")
-	public ModelAndView excluirAlimento(@PathVariable Long id) {
+	public ResponseEntity<String> excluirAlimento(@PathVariable Integer id) {
+		
+		System.out.println(id);
 		refeicaoService.excluirPorId(id);
-		ModelAndView mv = new ModelAndView("redirect:/refeicao/listar");
-		return mv;
+		return new ResponseEntity<String>("",HttpStatus.OK);
 	}
 
 }

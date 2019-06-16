@@ -21,7 +21,7 @@ export default {
     },
     methods:{
         salvar(){
-              this.$axios.post("http://localhost:8080/alimentos/salvar", {
+              this.$axios.post("http://54.87.6.194:8080/agoravai/alimentos/salvar", {
                 nomeAlimento: this.nome,
                 descricao: this.desc
               })

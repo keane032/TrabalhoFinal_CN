@@ -29,8 +29,8 @@ public class RefeicaoService {
 		
 	}
 
-	public void excluirPorId(Long id) {
-		refeicaoRepository.deleteById(id);
+	public void excluirPorId(Integer id) {
+		refeicaoRepository.deleteAll();
 		
 	}
 

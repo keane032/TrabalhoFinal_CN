@@ -20,19 +20,19 @@
             <td>
                  <div>
                  <label><input type="radio" 
-                 v-on:click="choice(comida.nomeAlimento,bom)"
+                 v-on:click="choice(comida.id,bom)"
                  v-bind:name=comida.nomeAlimento ></label>
                </div>
             </td>
             <td>
                 <div>
-                 <label><input type="radio" v-on:click="choice(comida.nomeAlimento,razoavel)" 
+                 <label><input type="radio" v-on:click="choice(comida.id,razoavel)" 
                  v-bind:name=comida.nomeAlimento ></label>
                </div>
             </td>
             <td>
                <div>
-                 <label><input type="radio" v-on:click="choice(comida.nomeAlimento,ruim)" 
+                 <label><input type="radio" v-on:click="choice(comida.id,ruim)" 
                  v-bind:name=comida.nomeAlimento></label>
                </div>
             </td>
@@ -51,27 +51,34 @@ export default {
   data() {
     return {
       bom:"Bom",
-      razoavel:"razoavel",
-      ruim:"ruim",
-      comidas: []
+      razoavel:"Razoavel",
+      ruim:"Ruim",
+      comidas: [],
+      aux:[]
 
     };
   },
   created(){
       let _this = this
-      this.$axios.get("http://localhost:8080/refeicao/listar").then((response) => {
+      this.$axios.get("http://54.87.6.194:8080/refeicao/listar").then((response) => {
             console.log(response.data[0].listaDeAlimentos)
            _this.comidas=response.data[0].listaDeAlimentos
         })
   },
   methods: {
     salvar() {
-       console.log(this.comidas)
-       
+        let _this = this
+        console.log(_this.aux)
+      this.$axios.post("http://54.87.6.194:8080/avaliacao/salvar",_this.aux).then((response) => {
+          
+        })
     },
-    choice(comida,status) {
-      console.log(comida)
-      console.log(status)
+    choice(id,status) {
+        let _this = this
+        _this.aux.push(
+                      {"id":id,
+                        "ava":status})
+        console.log(_this.aux)
     }
   }
 };
