@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div  v-bind:style="{ 'background-image': 'url(' + 'https://agoravaidoroy.s3.amazonaws.com/baby-blue-micro-fiber-cloth-fabric-texture.jpg' + ')' }" 
+    id="app">
       <h1 id="titulo">RU</h1>
       <div id="op" style="margin-top: 2%;">
         <router-link style="margin-left: 3%;" to="/CadastrarRefeicao"><a>Cadastrar Refeicao</a></router-link>
